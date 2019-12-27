@@ -31,4 +31,29 @@ public class DaoGeneric<E> {
 		return objetoGravado;
 	}
 	
+	//apresenta o erro: detached
+	public void delete(E entidade) {
+		EntityManager entityManager = JpaUtil.getEntityManger();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		entityManager.remove(entidade); 
+		
+		transaction.commit();
+		entityManager.close();
+	}
+	
+	
+	public void deletePorId(E entidade) {
+		EntityManager entityManager = JpaUtil.getEntityManger();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		Object id = JpaUtil.getPrimaryKey(entidade);
+		entityManager.createQuery("delete from " + entidade.getClass().getCanonicalName() + " where id = " + id).executeUpdate(); //create query do JPA
+		
+		transaction.commit();
+		entityManager.close();
+	}
+	
 }

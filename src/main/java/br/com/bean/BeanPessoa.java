@@ -34,6 +34,13 @@ public class BeanPessoa {
 		return "";
 	}
 	
+	public String remove() {
+		// daoGeneric.delete(pessoa); //apresenta o erro: detached
+		daoGeneric.deletePorId(pessoa);
+		pessoa = new Pessoa();
+		return "";
+	}
+	
 
 	public Pessoa getPessoa() {
 		return pessoa;
