@@ -10,21 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity //nome tabela no banco de dados
+@Entity // nome tabela no banco de dados
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
 	private String sobrenome;
 	private Integer idade;
-	@Temporal(TemporalType.DATE) //somente a data
+	@Temporal(TemporalType.DATE) // somente a data
 	private Date dataNascimento;
+	private String sexo;
 	
 	
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
 
 	public Pessoa() {
 	}

@@ -39,7 +39,15 @@
 			<h:inputText value="#{beanPessoa.pessoa.sobrenome}" />
 			
 			<h:outputLabel value="Idade: " />
-			<h:inputText value="#{beanPessoa.pessoa.idade}" />							
+			<h:inputText value="#{beanPessoa.pessoa.idade}" />	
+			
+			<h:outputLabel value="Sexo: " /> 
+			<h:selectOneMenu id="campoSexo" value="#{beanPessoa.pessoa.sexo}" required="true"> <!-- ComboBox -->
+			 	<!-- noSelectionOption="true" -> não deixa seleciocar essa opção -->
+			 	<f:selectItem itemValue="" itemLabel="[-SELECIONE-]" noSelectionOption="true" /> 
+			 	<f:selectItem itemValue="M" itemLabel="Masculino" />
+			 	<f:selectItem itemValue="F" itemLabel="Feminino" />
+			</h:selectOneMenu>
 		
 			<h:outputLabel />
 			
