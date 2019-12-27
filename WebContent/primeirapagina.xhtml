@@ -55,6 +55,14 @@
 					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
 				</h:commandLink>
 			</h:column>
+			<h:column>
+				<h:commandLink value="Excluir" action="#{beanPessoa.remove}">
+					<!-- pega o objeto da lista -> pessoa (p), e manda para o manegedBean da tela pessoa -->
+					<!-- primeiro executo a atruição do objeto para o manegedBean pelo core -->
+					<!-- depois executa a ação (action) do commandLink -->
+					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
+				</h:commandLink>
+			</h:column>
 		</h:dataTable>
 		
 	</h:form>
