@@ -1,5 +1,7 @@
 package br.com.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -54,6 +56,20 @@ public class DaoGeneric<E> {
 		
 		transaction.commit();
 		entityManager.close();
+	}
+	
+	//um datatable é sempre amarrado a uma lista
+	public List<E> getListEntity(Class<E> entidade){
+		EntityManager entityManager = JpaUtil.getEntityManger();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		List<E> listaRetorno = entityManager.createQuery("from " + entidade.getName()).getResultList();
+		
+		transaction.commit();
+		entityManager.close();
+		
+		return listaRetorno;
 	}
 	
 }
