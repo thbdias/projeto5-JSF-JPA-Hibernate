@@ -24,6 +24,7 @@ public class BeanPessoa {
 	// método que será utilizado pela tela jsf
 	public String salvar() {
 		daoGeneric.salvar(pessoa);
+		pessoa = new Pessoa();
 		return "";
 	}
 	
