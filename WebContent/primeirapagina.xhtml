@@ -49,6 +49,12 @@
 			<h:column>
 				<h:outputText value="#{p.sobrenome}" />
 			</h:column>
+			<h:column>
+				<h:commandLink value="Editar">
+					<!-- pega o objeto da lista -> pessoa (p), e manda para o manegedBean da tela pessoa -->
+					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
+				</h:commandLink>
+			</h:column>
 		</h:dataTable>
 		
 	</h:form>
