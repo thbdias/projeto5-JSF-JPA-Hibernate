@@ -14,6 +14,10 @@
 	<h:form id="formPessoa">
 		<h1>Olá JSF</h1>
 		
+		<h:outputLabel value="Id: " />
+		<h:inputText value="#{beanPessoa.pessoa.id}" readonly="true"/>
+		
+		<br />
 		<h:outputLabel value="Nome: " />
 		<h:inputText value="#{beanPessoa.pessoa.nome}" />
 		
@@ -29,6 +33,7 @@
 		
 		<br />
 		<h:commandButton value="Salvar" action="#{beanPessoa.salvar}" />
+		<h:commandButton value="Novo" action="#{beanPessoa.novo}" />
 		
 	</h:form>
 	

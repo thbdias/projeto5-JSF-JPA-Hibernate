@@ -23,11 +23,16 @@ public class BeanPessoa {
 
 	// método que será utilizado pela tela jsf
 	public String salvar() {
-		daoGeneric.salvar(pessoa);
-		pessoa = new Pessoa();
+		//daoGeneric.salvar(pessoa); //apenas salva no BD e não retorna nada
+		pessoa = daoGeneric.merge(pessoa); //salva ou atualiza e retorna o objeto salvo no BD
+		
 		return "";
 	}
 	
+	public String novo() {
+		pessoa = new Pessoa();
+		return "";
+	}
 	
 
 	public Pessoa getPessoa() {

@@ -12,10 +12,23 @@ public class DaoGeneric<E> {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		
-		entityManager.persist(entidade); //salvar no BD
+		entityManager.persist(entidade); //apenas salva no BD e não retorna nada
 		
 		transaction.commit();
 		entityManager.close();
+	}
+	
+	public E merge(E entidade) {
+		EntityManager entityManager = JpaUtil.getEntityManger();
+		EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+		
+		E objetoGravado = entityManager.merge(entidade); //salva ou atualiza e retorna o objeto salvo no BD		
+		
+		transaction.commit();
+		entityManager.close();
+		
+		return objetoGravado;
 	}
 	
 }
