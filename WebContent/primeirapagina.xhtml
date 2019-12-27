@@ -43,17 +43,24 @@
 		
 		
 		<br />		
-		<h:dataTable value="#{beanPessoa.pessoas}" var="p">
+		<h:dataTable value="#{beanPessoa.pessoas}" var="p" border="3" cellpadding="6">
+			<f:facet name="header">
+				Lista de pessoas cadastradas	
+			</f:facet>
+			
 			<h:column>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{p.id}" />
 			</h:column>
 			<h:column>
+				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{p.nome}" />
 			</h:column>
 			<h:column>
+				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{p.sobrenome}" />
 			</h:column>
-			<h:column>
+			<h:column>				
 				<h:commandLink value="Editar">
 					<!-- pega o objeto da lista -> pessoa (p), e manda para o manegedBean da tela pessoa -->
 					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
