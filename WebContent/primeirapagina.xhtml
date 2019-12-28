@@ -42,12 +42,23 @@
 			<h:inputText value="#{beanPessoa.pessoa.idade}" />	
 			
 			<h:outputLabel value="Sexo: " /> 
-			<h:selectOneMenu id="campoSexo" value="#{beanPessoa.pessoa.sexo}" required="true"> <!-- ComboBox -->
-			 	<!-- noSelectionOption="true" -> não deixa seleciocar essa opção -->
-			 	<f:selectItem itemValue="" itemLabel="[-SELECIONE-]" noSelectionOption="true" /> 
+			<h:selectOneMenu id="campoSexo" value="#{beanPessoa.pessoa.sexo}" > <!-- ComboBox -->			 	
+			 	<f:selectItem itemValue="" itemLabel="[-SELECIONE-]" /> 
 			 	<f:selectItem itemValue="M" itemLabel="Masculino" />
 			 	<f:selectItem itemValue="F" itemLabel="Feminino" />
 			</h:selectOneMenu>
+		
+			<h:outputLabel value="Frameworks: " /> 
+			<h:selectManyMenu id="campoFrameworks" 
+					value="#{beanPessoa.pessoa.frameworks}"
+					style="height:150px"> 			 				 	 
+			 	<f:selectItem itemValue="Hibernate"/>
+			 	<f:selectItem itemValue="Spring MVC"/>
+			 	<f:selectItem itemValue="Jpa"/>
+			 	<f:selectItem itemValue="PrimeFaces"/>
+			 	<f:selectItem itemValue="JSF"/>
+			</h:selectManyMenu>
+		
 		
 			<h:outputLabel />
 			

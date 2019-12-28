@@ -24,8 +24,18 @@ public class Pessoa implements Serializable {
 	@Temporal(TemporalType.DATE) // somente a data
 	private Date dataNascimento;
 	private String sexo;
+	private String[] frameworks;
 	
 	
+	
+
+	public String[] getFrameworks() {
+		return frameworks;
+	}
+
+	public void setFrameworks(String[] frameworks) {
+		this.frameworks = frameworks;
+	}
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
