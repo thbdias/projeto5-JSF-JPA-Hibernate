@@ -46,9 +46,7 @@
 			 	<f:selectItem itemValue="" itemLabel="[-SELECIONE-]" /> 
 			 	<f:selectItem itemValue="M" itemLabel="Masculino" />
 			 	<f:selectItem itemValue="F" itemLabel="Feminino" />
-			</h:selectOneMenu>
-			
-			<h:outputLabel value="Sexo: " />
+			</h:selectOneMenu>						
 		
 			<h:outputLabel value="Frameworks: " /> 
 			<h:selectManyMenu id="campoFrameworks" 
@@ -61,7 +59,7 @@
 			 	<f:selectItem itemValue="JSF"/>
 			</h:selectManyMenu>
 		
-			<h:outputLabel />
+			
 			
 			<h:outputLabel value="Ativo: "/>
 			<h:selectBooleanCheckbox value="#{beanPessoa.pessoa.ativo}"/>
@@ -72,6 +70,7 @@
 				<h:commandButton value="Salvar" action="#{beanPessoa.salvar}" />
 				<h:commandButton value="Novo" action="#{beanPessoa.novo}" />
 				<h:commandButton value="Remove" action="#{beanPessoa.remove}" />
+				<h:commandButton value="Limpar" type="reset"/>
 			</h:panelGroup>
 		</h:panelGrid>
 		
