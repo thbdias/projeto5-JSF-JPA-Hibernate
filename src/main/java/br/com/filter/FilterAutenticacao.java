@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.com.entidades.Pessoa;
 import br.com.jpa.util.JpaUtil;
 
 @WebFilter (urlPatterns = "/*") //interceptar todas páginas
@@ -32,7 +33,7 @@ public class FilterAutenticacao implements Filter {
 		HttpSession session = req.getSession();
 		
 		//retorna null caso não esteja logado
-		String userLogado = (String) session.getAttribute("usuarioLogado");
+		Pessoa userLogado = (Pessoa) session.getAttribute("usuarioLogado");
 		
 		//url que estou tentando acessar
 		String urlParaAutenticar  = req.getServletPath();
