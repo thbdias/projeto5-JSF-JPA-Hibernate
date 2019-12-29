@@ -25,9 +25,15 @@ public class Pessoa implements Serializable {
 	private Date dataNascimento;
 	private String sexo;
 	private String[] frameworks;
-	
-	
-	
+	private Boolean ativo;
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
 
 	public String[] getFrameworks() {
 		return frameworks;
