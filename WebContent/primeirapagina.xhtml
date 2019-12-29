@@ -68,10 +68,10 @@
 			<h:outputLabel />
 			
 			<h:panelGroup>
-				<h:commandButton value="Salvar" action="#{beanPessoa.salvar}" image="/resources/img/salvar.png" title="Salvar" />
-				<h:commandButton value="Novo" action="#{beanPessoa.novo}" image="/resources/img/novo.png" title="Novo"/>
-				<h:commandButton value="Remove" action="#{beanPessoa.remove}" image="/resources/img/excluir.png" title="Excluir"/>
-				<h:commandButton value="Limpar" type="reset" image="/resources/img/limpar.png" title="Limpar"/>
+				<h:commandButton value="Salvar" action="#{beanPessoa.salvar}" image="resources/img/salvar.png" title="Salvar" />
+				<h:commandButton value="Novo" action="#{beanPessoa.novo}" image="resources/img/novo.png" title="Novo"/>
+				<h:commandButton value="Remove" action="#{beanPessoa.remove}" image="resources/img/excluir.png" title="Excluir"/>
+				<h:commandButton value="Limpar" type="reset" image="resources/img/limpar.png" title="Limpar"/>
 			</h:panelGroup>
 		</h:panelGrid>
 		
@@ -98,7 +98,7 @@
 				<h:commandLink>
 					<!-- pega o objeto da lista -> pessoa (p), e manda para o manegedBean da tela pessoa -->
 					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
-					<h:graphicImage value="/resources/img/editar.png"/>
+					<h:graphicImage value="resources/img/editar.png"/>
 				</h:commandLink>
 			</h:column>
 			<h:column>
@@ -107,7 +107,7 @@
 					<!-- primeiro executo a atruição do objeto para o manegedBean pelo core -->
 					<!-- depois executa a ação (action) do commandLink -->
 					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
-					<h:graphicImage value="/resources/img/excluir.png"/>					                       
+					<h:graphicImage value="resources/img/excluir.png"/>					                       
 				</h:commandLink>
 			</h:column>
 		</h:dataTable>
