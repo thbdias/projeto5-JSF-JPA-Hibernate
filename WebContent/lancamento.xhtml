@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://java.sun.com/jsf/html">
-		
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
 <h:head>
-	<title>Login</title>	
+	<title>Lançamentos</title>
 </h:head>
 
-<h:body>	
+<h:body>
 
-	<h:form id="formLogin" style="margin-top:22%; margin-left:40%">
-		<h1>Realize o login</h1>
+	<h:form>
+		<h:commandLink value="Administracao" action="primeirapagina"
+			style="margin-left:1cm;" />
+		<h:commandLink value="Lançamentos" action="lancamento"
+			style="margin-left:1cm;" />
+		<h:commandLink value="TrocarUsuario" action="index"
+			style="margin-left:1cm;" />
+	</h:form>
 
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Login:"/>
-			<h:inputText value="#{beanPessoa.pessoa.login}"/>
-			
-			<h:outputLabel value="Senha:"/>
-			<h:inputSecret value="#{beanPessoa.pessoa.senha}"/>
-			
-			<h:outputLabel />
-			<h:commandButton value="Acessar" action="#{beanPessoa.logar}"/>
-		</h:panelGrid>
-		
+	<h:form id="formLancamento" style="margin-top:22%; margin-left:40%">
+
+		<h:form>
+			<h:panelGrid columns="2">
+				<f:facet name="header">
+					<h:outputLabel value="Lançamentos" />
+				</f:facet>
+
+				<h:outputLabel value="ID: " />
+				<h:inputText value="#{beanLancamento.lancamento.id}" readonly="true" />
+
+				<h:outputLabel value="Nota: " />
+				<h:inputText value="#{beanLancamento.lancamento.numeroNotaFiscal}" />
+
+				<h:outputLabel value="Origem: " />
+				<h:inputText value="#{beanLancamento.lancamento.empresaOrigem}" />
+
+				<h:outputLabel value="Destino: " />
+				<h:inputText value="#{beanLancamento.lancamento.empresaDestino}" />
+
+				<h:outputLabel />
+
+				<h:panelGroup>
+					<h:commandButton value="Salvar" action="#{beanLancamento.salvar}" image="resources/img/salvar.png" title="Salvar" style="margin-left:1cm;" />
+					<h:commandButton value="Novo" action="#{beanLancamento.novo}" image="resources/img/novo.png" title="Novo" style="margin-left:1cm;" />					
+					<h:commandButton value="Remove" action="#{beanLancamento.remove}" image="resources/img/excluir.png" style="margin-left:1cm;" title="Excluir" />
+					<h:commandButton value="Limpar" type="reset" image="resources/img/limpar.png" title="Limpar" style="margin-left:1cm;" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+
 	</h:form>
 
 </h:body>
