@@ -21,7 +21,7 @@ public class BeanLancamento {
 
 	private Lancamento lancamento = new Lancamento();
 	private DaoGeneric<Lancamento> daoGeneric = new DaoGeneric<Lancamento>();
-	private List<Lancamento> pessoas = new ArrayList<Lancamento>();
+	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
 	private IDaoLancamento daoLancamento = new IDaoLancamentoImpl();
 	
 	public String salvar () {
@@ -55,7 +55,7 @@ public class BeanLancamento {
 		ExternalContext externalContext = context.getExternalContext();
 		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
 		
-		pessoas = daoLancamento.consultar(pessoaUser.getId());
+		lancamentos = daoLancamento.consultar(pessoaUser.getId());
 	}
 
 	public Lancamento getLancamento() {
@@ -74,12 +74,12 @@ public class BeanLancamento {
 		this.daoGeneric = daoGeneric;
 	}
 
-	public List<Lancamento> getPessoas() {
-		return pessoas;
+	public List<Lancamento> getLancamentos() {
+		return lancamentos;
 	}
 
-	public void setPessoas(List<Lancamento> pessoas) {
-		this.pessoas = pessoas;
+	public void setLancamentos(List<Lancamento> lancamentos) {
+		this.lancamentos = lancamentos;
 	}
 	
 	

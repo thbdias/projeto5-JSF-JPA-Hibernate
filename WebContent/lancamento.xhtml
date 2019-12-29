@@ -48,6 +48,31 @@
 					<h:commandButton value="Limpar" type="reset" image="resources/img/limpar.png" title="Limpar" style="margin-left:1cm;" />
 				</h:panelGroup>
 			</h:panelGrid>
+			
+			<h:dataTable value="#{beanLancamento.lancamentos}" var="lanc" border="3">
+				<f:facet name="header">Lista de lançamentos</f:facet>
+				
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputLabel value="#{lanc.id}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nota</f:facet>
+					<h:outputLabel value="#{lanc.numeroNotaFiscal}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Origem</f:facet>
+					<h:outputLabel value="#{lanc.empresaOrigem}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Destino</f:facet>
+					<h:outputLabel value="#{lanc.empresaDestino}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Usuário</f:facet>
+					<h:outputLabel value="#{lanc.usuario.nome}"/>
+				</h:column>
+			</h:dataTable>
 		</h:form>
 
 
