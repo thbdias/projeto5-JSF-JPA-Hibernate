@@ -33,7 +33,7 @@ public class FilterAutenticacao implements Filter {
 		HttpSession session = req.getSession();
 		
 		//retorna null caso não esteja logado
-		String userLogado = (String) session.getAttribute("usuarioLogado");
+		Pessoa userLogado = (Pessoa) session.getAttribute("usuarioLogado");
 		
 		//url que estou tentando acessar
 		String urlParaAutenticar  = req.getServletPath();

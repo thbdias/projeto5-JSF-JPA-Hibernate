@@ -76,8 +76,7 @@ public class BeanPessoa {
 		return pessoas;
 	}
 	
-	public String logar() {
-		
+	public String logar() {		
 		Pessoa pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(), pessoa.getSenha());
 		
 		if (pessoaUser != null) {//achou usuario
@@ -85,12 +84,27 @@ public class BeanPessoa {
 			//pq vai cair no filter de autenticacao e irá fazer a validação
 			FacesContext context = FacesContext.getCurrentInstance();
 			ExternalContext externalContext = context.getExternalContext();
-			externalContext.getSessionMap().put("usuarioLogado", pessoaUser.getLogin());
+			externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
 			
 			return "primeirapagina.jsf";
-		}
-		
+		}		
 		return "index.jsf";
+	}
+	
+	public boolean permiteAcesso(String acesso) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
+		
+		return pessoaUser.getPerfilUser().equals(acesso);
 	}
 
 }
+
+
+
+
+
+
+
+
