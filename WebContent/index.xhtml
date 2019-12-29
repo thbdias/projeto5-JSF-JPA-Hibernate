@@ -4,24 +4,15 @@
 		xmlns:h="http://java.sun.com/jsf/html">
 		
 <h:head>
-	<title>Login</title>	
+	<title>Lançamentos</title>	
 </h:head>
 
-<h:body>
+<h:body>	
 
-	<h:form id="formLogin" style="margin-top:22%; margin-left:40%">
+	<h:form id="formLancamento" style="margin-top:22%; margin-left:40%">
 		<h1>Realize o login</h1>
 
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Login:"/>
-			<h:inputText value="#{beanPessoa.pessoa.login}"/>
-			
-			<h:outputLabel value="Senha:"/>
-			<h:inputSecret value="#{beanPessoa.pessoa.senha}"/>
-			
-			<h:outputLabel />
-			<h:commandButton value="Acessar" action="#{beanPessoa.logar}"/>
-		</h:panelGrid>
+		
 		
 	</h:form>
 
