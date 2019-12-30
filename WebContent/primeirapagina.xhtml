@@ -77,6 +77,14 @@
 			 	<f:selectItem itemValue="SECRETARIO" itemLabel="Secretario" />
 			 	<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista" />
 			</h:selectOneMenu>	
+			
+			<h:outputLabel value="Programador: "/>
+			<h:selectOneRadio value="#{beanPessoa.pessoa.nivelProgramador}" layout="pageDirection">
+				<f:selectItem itemValue="J" itemLabel="Junior"/>
+				<f:selectItem itemValue="P" itemLabel="Pleno"/>
+				<f:selectItem itemValue="S" itemLabel="Sênior"/>
+				<f:selectItem itemValue="E" itemLabel="Especialista"/>
+			</h:selectOneRadio>
 		
 			<h:outputLabel />
 			

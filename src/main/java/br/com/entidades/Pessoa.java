@@ -30,7 +30,16 @@ public class Pessoa implements Serializable {
 	private String login;
 	private String senha;
 	private String perfilUser;
+	private String nivelProgramador;
 	
+	
+	public void setNivelProgramador(String nivelProgramador) {
+		this.nivelProgramador = nivelProgramador;
+	}
+	
+	public String getNivelProgramador() {
+		return nivelProgramador;
+	}
 	
 	public void setSexoRadio(String sexoRadio) {
 		this.sexoRadio = sexoRadio;
