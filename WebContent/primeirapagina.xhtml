@@ -41,7 +41,13 @@
 			 	<f:selectItem itemValue="" itemLabel="[-SELECIONE-]" /> 
 			 	<f:selectItem itemValue="M" itemLabel="Masculino" />
 			 	<f:selectItem itemValue="F" itemLabel="Feminino" />
-			</h:selectOneMenu>						
+			</h:selectOneMenu>	
+						
+			<h:outputLabel value="Sexo Radio: "/>
+			<h:selectOneRadio value="#{beanPessoa.pessoa.sexoRadio}">
+				<f:selectItem itemValue="M" itemLabel="Masculino"/>
+				<f:selectItem itemValue="F" itemLabel="Feminino"/>
+			</h:selectOneRadio>
 		
 			<h:outputLabel value="Frameworks: " /> 
 			<h:selectManyMenu id="campoFrameworks" 
