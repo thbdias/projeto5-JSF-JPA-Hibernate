@@ -85,6 +85,15 @@
 				<f:selectItem itemValue="S" itemLabel="Sênior"/>
 				<f:selectItem itemValue="E" itemLabel="Especialista"/>
 			</h:selectOneRadio>
+			
+			<h:outputLabel value="Linguagens: "/>
+			<h:selectManyCheckbox value="#{beanPessoa.pessoa.linguagens}">
+				<f:selectItem itemValue="1" itemLabel="Java"/>
+				<f:selectItem itemValue="2" itemLabel="PHP"/>
+				<f:selectItem itemValue="3" itemLabel="Python"/>
+				<f:selectItem itemValue="4" itemLabel="C#"/>
+				<f:selectItem itemValue="5" itemLabel="Cobol"/>
+			</h:selectManyCheckbox>
 		
 			<h:outputLabel />
 			
