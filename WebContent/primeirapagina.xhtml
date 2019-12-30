@@ -18,6 +18,8 @@
 
 	<h:form id="formPessoa" rendered="#{beanPessoa.permiteAcesso('ADMINISTRADOR')}">
 		
+		<h:messages infoStyle="color:green" />
+		
 		<!-- rendered -> responsável por renderizar elementos na tela -> true=mostrar / false=esconder -->
 		<h:panelGrid columns="2" rendered="true">
 			<f:facet name="header">

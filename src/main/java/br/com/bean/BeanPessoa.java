@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -33,7 +34,15 @@ public class BeanPessoa {
 		//daoGeneric.salvar(pessoa); //apenas salva no BD e não retorna nada
 		pessoa = daoGeneric.merge(pessoa); //salva ou atualiza e retorna o objeto salvo no BD
 		carregarPessoas();
+		mostrarMsg("Cadastrado com sucesso!");
 		return "";
+	}
+	
+	public void mostrarMsg(String msg) {
+		//acessar a parte de contextos do JSF - ambiente que está rodando
+		FacesContext context = FacesContext.getCurrentInstance();
+		FacesMessage message = new FacesMessage(msg);
+		context.addMessage(null, message);
 	}
 	
 	public String novo() {
@@ -46,6 +55,7 @@ public class BeanPessoa {
 		daoGeneric.deletePorId(pessoa);
 		pessoa = new Pessoa();
 		carregarPessoas();
+		mostrarMsg("Removido com sucesso!");
 		return "";
 	}
 	
