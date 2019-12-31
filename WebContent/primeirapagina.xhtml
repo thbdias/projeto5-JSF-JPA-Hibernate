@@ -107,14 +107,23 @@
 			
 			<h:panelGroup>
 				<h:commandButton value="Salvar" action="#{beanPessoa.salvar}" image="resources/img/salvar.png" title="Salvar" style="margin-left:1cm;" />
-				<h:commandButton value="Novo" action="#{beanPessoa.novo}" image="resources/img/novo.png" title="Novo" style="margin-left:1cm;" immediate="true"/>
+				<h:commandButton id="idBotaoNovo" value="Novo" action="#{beanPessoa.novo}" image="resources/img/novo.png" title="Novo" style="margin-left:1cm;" immediate="true">
+					<!-- execute o componente idBotaoNovo (action="#{beanPessoa.novo}") e renderize o pai desse botao (@form) --> 
+					<f:ajax execute="idBotaoNovo" render="@form"/>
+				</h:commandButton>
 				<!-- rendered -> responsável por renderizar elementos na tela -> true=mostrar / false=esconder -->
 				<h:commandButton value="Remove" action="#{beanPessoa.remove}" image="resources/img/excluir.png" style="margin-left:1cm;" title="Excluir" rendered="#{beanPessoa.permiteAcesso('ADMINISTRADOR')}"/>
-				<h:commandButton id="idBotaoLimpar" value="Limpar" action="#{beanPessoa.limpar}" image="resources/img/limpar.png" title="Limpar" style="margin-left:1cm;"/>
+				<h:commandButton id="idBotaoLimpar" value="Limpar" action="#{beanPessoa.limpar}" image="resources/img/limpar.png" title="Limpar" style="margin-left:1cm;">
+					<!-- execute o componente idBotaoLimpar (action="#{beanPessoa.limpar}") e renderize o pai desse botao (@form) --> 
+					<f:ajax execute="idBotaoLimpar" render="@form"/>
+				</h:commandButton>
 			</h:panelGroup>
 		</h:panelGrid>		
 	</h:form>
 	
+	 
+	
+	 
 	<br />
 	
 	<h:form id="formTable">		
