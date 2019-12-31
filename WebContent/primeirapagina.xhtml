@@ -70,6 +70,12 @@
 			
 			<h:outputLabel value="CEP: "/>
 			<h:inputText value="#{beanPessoa.pessoa.cep}">
+				<!-- event="blur" => evento de perda de foro -->
+				<!-- execute="@this" => execute o compoente que possui o ajax (<h:inputText...>); manda para managedBean os dados desse componente-->
+				<!-- render => depois que consultar no lado do managedbean (consultar o cep e setar os dados do objeto), 
+								quais campos em tela que vou recarregar para mostrar os dados do cep? -->
+				<!-- listener => metodo que sera usado para consultar o cep -->
+				<f:ajax event="blur" execute="@this" listener="#{beanPessoa.pesquisaCep}"/>
 			</h:inputText>
 		
 			

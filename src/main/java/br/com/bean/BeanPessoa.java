@@ -13,6 +13,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import br.com.dao.DaoGeneric;
 import br.com.entidades.Pessoa;
@@ -64,6 +65,10 @@ public class BeanPessoa {
 		carregarPessoas();
 		mostrarMsg("Removido com sucesso!");
 		return "";
+	}
+	
+	public void pesquisaCep(AjaxBehaviorEvent event) {	
+		System.out.println("\n\n\n\nCep para pesquisa: " + pessoa.getCep() + "\n\n\n\n");
 	}
 	
 	//sempre que se abrir a tela jsf desse managedBean e ele for instanciado, criado em memória, ele vai carregar o método que está anotado com @PostConstruct
