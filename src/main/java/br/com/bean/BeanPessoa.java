@@ -1,5 +1,10 @@
 package br.com.bean;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +73,27 @@ public class BeanPessoa {
 	}
 	
 	public void pesquisaCep(AjaxBehaviorEvent event) {	
-		System.out.println("\n\n\n\nCep para pesquisa: " + pessoa.getCep() + "\n\n\n\n");
+		try {
+			
+			URL url = new URL("https://viacep.com.br/ws/"+pessoa.getCep()+"/json/");
+			URLConnection connection = url.openConnection(); //abrindo conexao
+			//ler fluxo de dados
+			InputStream is = connection.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			
+			String cep = "";
+			StringBuilder jsonCep = new StringBuilder();
+			
+			while ((cep = br.readLine()) != null) {
+				jsonCep.append(cep);
+			}
+			
+			System.out.println("\n\n\njson: " + jsonCep + "\n\n");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			mostrarMsg("Erro ao consultar o cep");
+		}
 	}
 	
 	//sempre que se abrir a tela jsf desse managedBean e ele for instanciado, criado em memória, ele vai carregar o método que está anotado com @PostConstruct
