@@ -110,12 +110,14 @@
 				<h:commandButton value="Novo" action="#{beanPessoa.novo}" image="resources/img/novo.png" title="Novo" style="margin-left:1cm;"/>
 				<!-- rendered -> responsável por renderizar elementos na tela -> true=mostrar / false=esconder -->
 				<h:commandButton value="Remove" action="#{beanPessoa.remove}" image="resources/img/excluir.png" style="margin-left:1cm;" title="Excluir" rendered="#{beanPessoa.permiteAcesso('ADMINISTRADOR')}"/>
-				<h:commandButton value="Limpar" type="reset" image="resources/img/limpar.png" title="Limpar" style="margin-left:1cm;"/>
+				<h:commandButton id="idBotaoLimpar" value="Limpar" action="#{beanPessoa.limpar}" image="resources/img/limpar.png" title="Limpar" style="margin-left:1cm;"/>
 			</h:panelGroup>
-		</h:panelGrid>
-		
-		
-		<br />		
+		</h:panelGrid>		
+	</h:form>
+	
+	<br />
+	
+	<h:form id="formTable">		
 		<h:dataTable value="#{beanPessoa.pessoas}" var="p" border="3" cellpadding="6">
 			<f:facet name="header">
 				Lista de usuários cadastrados
@@ -151,8 +153,8 @@
 				</h:commandLink>
 			</h:column>
 		</h:dataTable>
-		
-	</h:form>
+	</h:form>	
+	
 	
 </h:body>
 </html>

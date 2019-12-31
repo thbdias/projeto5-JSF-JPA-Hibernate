@@ -46,6 +46,13 @@ public class BeanPessoa {
 	}
 	
 	public String novo() {
+		//executa algum processo antes de novo
+		pessoa = new Pessoa();
+		return "";
+	}
+	
+	public String limpar() {
+		//executa algum processo antes de limpar
 		pessoa = new Pessoa();
 		return "";
 	}
