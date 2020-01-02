@@ -103,8 +103,6 @@ public class BeanPessoa {
 			pessoa.setIbge(pessoaGsonAux.getIbge());
 			pessoa.setGia(pessoaGsonAux.getGia());
 			
-			System.out.println("\n\n\njson: " + jsonCep + "\n\n");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			mostrarMsg("Erro ao consultar o cep");

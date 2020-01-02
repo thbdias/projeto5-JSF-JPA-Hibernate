@@ -75,9 +75,33 @@
 				<!-- render => depois que consultar no lado do managedbean (consultar o cep e setar os dados do objeto), 
 								quais campos em tela que vou recarregar para mostrar os dados do cep? -->
 				<!-- listener => metodo que sera usado para consultar o cep -->
-				<f:ajax event="blur" execute="@this" listener="#{beanPessoa.pesquisaCep}"/>
+				<f:ajax event="blur" execute="@this" listener="#{beanPessoa.pesquisaCep}"
+						render="logradouro complemento bairro localidade uf unidade ibge gia"/>
 			</h:inputText>
-		
+			
+			<h:outputLabel value="Logradouro: "/>
+			<h:inputText value="#{beanPessoa.pessoa.logradouro}" id="logradouro"/>
+			
+			<h:outputLabel value="Complemento: "/>
+			<h:inputText value="#{beanPessoa.pessoa.complemento}" id="complemento"/>
+			
+			<h:outputLabel value="Bairro: "/>
+			<h:inputText value="#{beanPessoa.pessoa.bairro}" id="bairro"/>
+			
+			<h:outputLabel value="Localidade: "/>
+			<h:inputText value="#{beanPessoa.pessoa.localidade}" id="localidade"/>
+			
+			<h:outputLabel value="UF: "/>
+			<h:inputText value="#{beanPessoa.pessoa.uf}" id="uf"/>
+			
+			<h:outputLabel value="Unidade: "/>
+			<h:inputText value="#{beanPessoa.pessoa.unidade}" id="unidade"/>
+			
+			<h:outputLabel value="IBGE: "/>
+			<h:inputText value="#{beanPessoa.pessoa.ibge}" id="ibge"/>
+			
+			<h:outputLabel value="Gia: "/>
+			<h:inputText value="#{beanPessoa.pessoa.gia}" id="gia"/>						
 			
 			<h:outputLabel value="Ativo: "/>
 			<h:selectBooleanCheckbox value="#{beanPessoa.pessoa.ativo}"/>
