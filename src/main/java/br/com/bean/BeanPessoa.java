@@ -20,6 +20,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import com.google.gson.Gson;
+
 import br.com.dao.DaoGeneric;
 import br.com.entidades.Pessoa;
 import br.com.repository.IDaoPessoa;
@@ -87,6 +89,19 @@ public class BeanPessoa {
 			while ((cep = br.readLine()) != null) {
 				jsonCep.append(cep);
 			}
+			
+			//converte um json em string para uma determinada classe
+			Pessoa pessoaGsonAux = new Gson().fromJson(jsonCep.toString(), Pessoa.class);
+			
+			pessoa.setCep(pessoaGsonAux.getCep());
+			pessoa.setLogradouro(pessoaGsonAux.getLogradouro());
+			pessoa.setComplemento(pessoaGsonAux.getComplemento());
+			pessoa.setBairro(pessoaGsonAux.getBairro());
+			pessoa.setLocalidade(pessoaGsonAux.getLocalidade());
+			pessoa.setUf(pessoaGsonAux.getUf());
+			pessoa.setUnidade(pessoaGsonAux.getUnidade());
+			pessoa.setIbge(pessoaGsonAux.getIbge());
+			pessoa.setGia(pessoaGsonAux.getGia());
 			
 			System.out.println("\n\n\njson: " + jsonCep + "\n\n");
 			
