@@ -139,8 +139,10 @@
 			</h:selectManyCheckbox>
 			
 			<h:outputLabel value="Estados: "/>
-			<h:selectOneMenu value="#{beanPessoa.pessoa.estados}">
+			<h:selectOneMenu value="#{beanPessoa.pessoa.estados}" immediate="true">
+				<f:selectItem itemLabel="--[Selecione]--" noSelectionOption="true"/>
 				<f:selectItems value="#{beanPessoa.estados}"/>
+				<f:ajax event="change" execute="@this" listener="#{beanPessoa.carregaCidades}"/>
 			</h:selectOneMenu>
 		
 			<h:outputLabel />

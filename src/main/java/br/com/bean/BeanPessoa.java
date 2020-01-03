@@ -180,6 +180,15 @@ public class BeanPessoa {
 		estados = iDaoPessoa.listaEstados();
 		return estados;
 	}
+	
+	
+	public void carregaCidades(AjaxBehaviorEvent event) {
+		String codigoEstado = (String) event.getComponent().getAttributes().get("submittedValue");
+		
+		if (codigoEstado != null) {
+			System.out.println(codigoEstado);
+		}
+	}
 }
 
 
