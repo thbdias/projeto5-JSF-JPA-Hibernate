@@ -137,6 +137,11 @@
 				<f:selectItem itemValue="4" itemLabel="C#"/>
 				<f:selectItem itemValue="5" itemLabel="Cobol"/>
 			</h:selectManyCheckbox>
+			
+			<h:outputLabel value="Estados: "/>
+			<h:selectOneMenu value="#{beanPessoa.pessoa.estados}">
+				<f:selectItems value="#{beanPessoa.estados}"/>
+			</h:selectOneMenu>
 		
 			<h:outputLabel />
 			

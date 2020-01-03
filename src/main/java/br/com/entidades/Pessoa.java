@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity // nome tabela no banco de dados
 public class Pessoa implements Serializable {
@@ -41,8 +42,19 @@ public class Pessoa implements Serializable {
 	private String unidade;
 	private String ibge;
 	private String gia;
+
+	//náo gravar esse campo no banco de dados
+	@Transient
+	private Estados estados;
 	
 	
+	public void setEstados(Estados estados) {
+		this.estados = estados;
+	}
+	
+	public Estados getEstados() {
+		return estados;
+	}
 	
 	public String getLogradouro() {
 		return logradouro;
