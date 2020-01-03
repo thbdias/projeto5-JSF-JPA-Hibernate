@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.servlet.http.HttpServletRequest;
 
 import com.google.gson.Gson;
 
@@ -134,6 +135,19 @@ public class BeanPessoa {
 	
 	public List<Pessoa> getPessoas() {
 		return pessoas;
+	}
+	
+	public String deslogar() {
+		//removendo usuário da sessão
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		externalContext.getSessionMap().remove("usuarioLogado");
+		
+		//invalidando a sessao
+		HttpServletRequest httpServletRequest = (HttpServletRequest) context.getCurrentInstance().getExternalContext().getRequest();
+		httpServletRequest.getSession().invalidate();		
+		
+		return "index.jsf";
 	}
 	
 	public String logar() {		
