@@ -25,7 +25,10 @@ import javax.servlet.http.HttpServletRequest;
 import com.google.gson.Gson;
 
 import br.com.dao.DaoGeneric;
+import br.com.entidades.Cidades;
+import br.com.entidades.Estados;
 import br.com.entidades.Pessoa;
+import br.com.jpa.util.JpaUtil;
 import br.com.repository.IDaoPessoa;
 import br.com.repository.IDaoPessoaImpl;
 
@@ -39,6 +42,7 @@ public class BeanPessoa {
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 	private IDaoPessoa iDaoPessoa = new IDaoPessoaImpl();
 	private List<SelectItem> estados;
+	private List<SelectItem> cidades;
 
 	// método que será utilizado pela tela jsf
 	public String salvar() {
@@ -139,6 +143,14 @@ public class BeanPessoa {
 		return pessoas;
 	}
 	
+	public void setCidades(List<SelectItem> cidades) {
+		this.cidades = cidades;
+	}
+	
+	public List<SelectItem> getCidades() {
+		return cidades;
+	}
+	
 	public String deslogar() {
 		//removendo usuário da sessão
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -186,7 +198,23 @@ public class BeanPessoa {
 		String codigoEstado = (String) event.getComponent().getAttributes().get("submittedValue");
 		
 		if (codigoEstado != null) {
-			System.out.println(codigoEstado);
+			
+			Estados estado = JpaUtil.getEntityManger().find(Estados.class, Long.parseLong(codigoEstado));
+			
+			if (estado != null) {
+				pessoa.setEstados(estado);
+				
+				List<Cidades> cidades = JpaUtil.getEntityManger().createQuery("from Cidades where estados.id = " + codigoEstado).getResultList();
+				
+				List<SelectItem> selectItemsCidade = new ArrayList<SelectItem>();
+				
+				for (Cidades cidade : cidades) {
+					selectItemsCidade.add(new SelectItem(cidade.getId(), cidade.getNome()));
+				}
+				
+				setCidades(selectItemsCidade);
+			}
+			
 		}
 	}
 }

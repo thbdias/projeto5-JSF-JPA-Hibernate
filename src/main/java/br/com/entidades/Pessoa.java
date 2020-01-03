@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -43,19 +44,29 @@ public class Pessoa implements Serializable {
 	private String ibge;
 	private String gia;
 
-	//náo gravar esse campo no banco de dados
+	// náo gravar esse campo no banco de dados
 	@Transient
 	private Estados estados;
-	
-	
+
+	@ManyToOne
+	private Cidades cidades;
+
+	public void setCidades(Cidades cidades) {
+		this.cidades = cidades;
+	}
+
+	public Cidades getCidades() {
+		return cidades;
+	}
+
 	public void setEstados(Estados estados) {
 		this.estados = estados;
 	}
-	
+
 	public Estados getEstados() {
 		return estados;
 	}
-	
+
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -123,31 +134,31 @@ public class Pessoa implements Serializable {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
+
 	public String getCep() {
 		return cep;
 	}
-	
+
 	public void setLinguagens(Integer[] linguagens) {
 		this.linguagens = linguagens;
 	}
-	
+
 	public Integer[] getLinguagens() {
 		return linguagens;
 	}
-	
+
 	public void setNivelProgramador(String nivelProgramador) {
 		this.nivelProgramador = nivelProgramador;
 	}
-	
+
 	public String getNivelProgramador() {
 		return nivelProgramador;
 	}
-	
+
 	public void setSexoRadio(String sexoRadio) {
 		this.sexoRadio = sexoRadio;
 	}
-	
+
 	public String getSexoRadio() {
 		return sexoRadio;
 	}

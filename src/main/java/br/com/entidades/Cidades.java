@@ -42,6 +42,14 @@ public class Cidades implements Serializable {
 		return serialVersionUID;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
