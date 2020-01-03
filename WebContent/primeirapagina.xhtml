@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-  		xmlns:h="http://java.sun.com/jsf/html"
-  		xmlns:f="http://java.sun.com/jsf/core"
-  		xmlns:ui = "http://java.sun.com/jsf/facelets"> 
+  		xmlns:h = "http://java.sun.com/jsf/html"
+  		xmlns:f = "http://java.sun.com/jsf/core"
+  		xmlns:ui = "http://java.sun.com/jsf/facelets"
+  		xmlns:pt = "http://xmlns.jcp.org/jsf/passthrough"> 
 
 <h:head>
 	<title>Cadastro de Usuário</title>
@@ -29,7 +30,7 @@
 			<h:outputLabel value="Nome: " />
 			<h:inputText value="#{beanPessoa.pessoa.nome}" 
 					required="true" requiredMessage="Informe nome do usuário" 
-					validatorMessage="Nome deve ter no minimo 5 letras">
+					validatorMessage="Nome deve ter no minimo 5 letras" pt:placeholder="Informe o nome do usuário">
 				<f:validateLength minimum="5" maximum="50"/>
 			</h:inputText>
 			
@@ -69,7 +70,7 @@
 			</h:selectManyMenu>
 			
 			<h:outputLabel value="CEP: "/>
-			<h:inputText value="#{beanPessoa.pessoa.cep}">
+			<h:inputText value="#{beanPessoa.pessoa.cep}" pt:placeholder="Informe um CEP válido">
 				<!-- event="blur" => evento de perda de foro -->
 				<!-- execute="@this" => execute o compoente que possui o ajax (<h:inputText...>); manda para managedBean os dados desse componente-->
 				<!-- render => depois que consultar no lado do managedbean (consultar o cep e setar os dados do objeto), 
