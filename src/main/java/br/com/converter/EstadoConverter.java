@@ -12,7 +12,8 @@ import javax.persistence.EntityTransaction;
 import br.com.entidades.Estados;
 import br.com.jpa.util.JpaUtil;
 
-@FacesConverter(forClass = Estados.class)
+//value estadoConverter -> utilizado na tela 
+@FacesConverter(forClass = Estados.class, value = "estadoConverter")
 public class EstadoConverter implements Converter, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,8 +35,14 @@ public class EstadoConverter implements Converter, Serializable {
 	//function é executada quando o objeto vem do servidor para a tela
 	//vem do servidor o objeto e manda pra tela o id
 	@Override //retorna apenas o codigo em string
-	public String getAsString(FacesContext context, UIComponent component, Object estado) {		
-		return ((Estados) estado).getId().toString();
+	public String getAsString(FacesContext context, UIComponent component, Object estado) {	
+		
+		if (estado == null ) return null;
+		
+		if (estado instanceof Estados) 
+			return ((Estados) estado).getId().toString();
+		else 
+			return estado.toString();
 	}
 
 }

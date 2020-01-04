@@ -67,9 +67,5 @@ public class Estados implements Serializable {
 		return true;
 	}
 	
-	@Override
-	public String toString() {
-		return getId().toString();
-	}
-
+	
 }

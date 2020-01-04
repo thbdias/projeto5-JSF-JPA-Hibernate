@@ -13,7 +13,8 @@ import br.com.entidades.Cidades;
 import br.com.entidades.Estados;
 import br.com.jpa.util.JpaUtil;
 
-@FacesConverter(forClass = Cidades.class)
+//value cidadeConverter -> utilizado na tela
+@FacesConverter(forClass = Cidades.class, value = "cidadeConverter")
 public class CidadeConverter implements Converter, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -35,8 +36,14 @@ public class CidadeConverter implements Converter, Serializable {
 	//function é executada quando o objeto vem do servidor para a tela
 	//vem do servidor o objeto e manda pra tela o id
 	@Override //retorna apenas o codigo em string
-	public String getAsString(FacesContext context, UIComponent component, Object cidade) {		
-		return ((Cidades) cidade).getId().toString();
+	public String getAsString(FacesContext context, UIComponent component, Object cidade) {	
+		
+		if (cidade == null ) return null;
+		
+		if (cidade instanceof Cidades) 
+			return ((Cidades) cidade).getId().toString();
+		else 
+			return cidade.toString();
 	}
 
 }

@@ -16,6 +16,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlCommandButton;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -195,26 +196,23 @@ public class BeanPessoa {
 	
 	
 	public void carregaCidades(AjaxBehaviorEvent event) {
-		String codigoEstado = (String) event.getComponent().getAttributes().get("submittedValue");
+			
+		//pegando objeto inteiro que foi selecionado no combobox
+		Estados estado = (Estados) ((HtmlSelectOneMenu) event.getSource()).getValue();
 		
-		if (codigoEstado != null) {
+		if (estado != null) {
+			pessoa.setEstados(estado);
 			
-			Estados estado = JpaUtil.getEntityManger().find(Estados.class, Long.parseLong(codigoEstado));
+			List<Cidades> cidades = JpaUtil.getEntityManger()
+					.createQuery("from Cidades where estados.id = " + estado.getId()).getResultList();
 			
-			if (estado != null) {
-				pessoa.setEstados(estado);
-				
-				List<Cidades> cidades = JpaUtil.getEntityManger().createQuery("from Cidades where estados.id = " + codigoEstado).getResultList();
-				
-				List<SelectItem> selectItemsCidade = new ArrayList<SelectItem>();
-				
-				for (Cidades cidade : cidades) {
-					selectItemsCidade.add(new SelectItem(cidade.getId(), cidade.getNome()));
-				}
-				
-				setCidades(selectItemsCidade);
+			List<SelectItem> selectItemsCidade = new ArrayList<SelectItem>();
+			
+			for (Cidades cidade : cidades) {
+				selectItemsCidade.add(new SelectItem(cidade, cidade.getNome()));
 			}
 			
+			setCidades(selectItemsCidade);
 		}
 	}
 }

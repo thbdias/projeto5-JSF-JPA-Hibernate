@@ -139,14 +139,14 @@
 			</h:selectManyCheckbox>
 			
 			<h:outputLabel value="Estados: "/>
-			<h:selectOneMenu value="#{beanPessoa.pessoa.estados}" immediate="true">
+			<h:selectOneMenu value="#{beanPessoa.pessoa.estados}" immediate="true" id="comboEstado" converter="estadoConverter">
 				<f:selectItem itemLabel="--[Selecione]--" noSelectionOption="true"/>
 				<f:selectItems value="#{beanPessoa.estados}"/>
 				<f:ajax event="change" execute="@this" listener="#{beanPessoa.carregaCidades}" render="comboCidade"/>
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="Cidades: "/>
-			<h:selectOneMenu value="#{beanPessoa.pessoa.cidades}" immediate="true" id="comboCidade">
+			<h:selectOneMenu value="#{beanPessoa.pessoa.cidades}" immediate="true" id="comboCidade" converter="cidadeConverter">
 				<f:selectItem itemLabel="--[Selecione]--" noSelectionOption="true"/>				
 				<f:selectItems value="#{beanPessoa.cidades}"/>				
 			</h:selectOneMenu>
