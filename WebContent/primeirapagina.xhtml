@@ -14,6 +14,11 @@
 
 	<ui:include src="/menu.xhtml"/>
 
+	<!-- 
+	
+	<h:form id="formPessoa" enctype="multipart/form-data" rendered="#{beanPessoa.permiteAcesso('ADMINISTRADOR')}">  
+		PROBLEMA COM enctype="multipart/form-data" - PROBLEMA JÁ TRATADO QUANDO ESTUDAVA JSP - CAMPO CARREGAR ARQUIVO
+	-->
 	<h:form id="formPessoa" enctype="multipart/form-data" rendered="#{beanPessoa.permiteAcesso('ADMINISTRADOR')}">
 		
 		<h:messages infoStyle="color:green" />
