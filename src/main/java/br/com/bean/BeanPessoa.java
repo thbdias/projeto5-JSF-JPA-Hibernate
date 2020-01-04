@@ -22,6 +22,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 
@@ -44,9 +45,13 @@ public class BeanPessoa {
 	private IDaoPessoa iDaoPessoa = new IDaoPessoaImpl();
 	private List<SelectItem> estados;
 	private List<SelectItem> cidades;
+	//Part -> pega o arquivo que o usuário selecionou para fazer upload, cria temporariamento do lado do servidor para obter no sistema
+	private Part arquivoFoto; 
+	
 
 	// método que será utilizado pela tela jsf
 	public String salvar() {
+		
 		//daoGeneric.salvar(pessoa); //apenas salva no BD e não retorna nada
 		pessoa = daoGeneric.merge(pessoa); //salva ou atualiza e retorna o objeto salvo no BD
 		
@@ -237,6 +242,14 @@ public class BeanPessoa {
 			
 			setCidades(selectItemsCidade);
 		}
+	}
+	
+	public void setArquivoFoto(Part arquivoFoto) {
+		this.arquivoFoto = arquivoFoto;
+	}
+	
+	public Part getArquivoFoto() {
+		return arquivoFoto;
 	}
 }
 
