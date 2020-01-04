@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity // nome tabela no banco de dados
 public class Pessoa implements Serializable {
@@ -19,7 +23,12 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
+	
+//	@NotBlank(message = "Sobrenome não informado - not blank")
+	@NotEmpty(message = "Informe sobrenome")
+	@NotNull(message = "Sobrenome deve ser informado")			
 	private String sobrenome;
+	
 	private Integer idade;
 	@Temporal(TemporalType.DATE) // somente a data
 	private Date dataNascimento;
