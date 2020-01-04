@@ -47,6 +47,11 @@ public class BeanPessoa {
 		return "";
 	}
 	
+	public void registraLog() {
+		System.out.println("'actionListener' não faz redirecionamento ao contrário do action");
+		System.out.println("'actionListener' é executado antes do 'action' -  método que registra log");
+	}
+	
 	public void mostrarMsg(String msg) {
 		//acessar a parte de contextos do JSF - ambiente que está rodando
 		FacesContext context = FacesContext.getCurrentInstance();
