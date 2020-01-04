@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.br.TituloEleitoral;
 
 @Entity // nome tabela no banco de dados
 public class Pessoa implements Serializable {
@@ -26,17 +28,17 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotEmpty(message = "beanValidator => nome nao pode vazio")
-	@Size(min = 5, max = 50, message = "beanValidator => nome deve ter entre 5 e 10 char")
+//	@NotEmpty(message = "beanValidator => nome nao pode vazio")//funcionando
+//	@Size(min = 5, max = 50, message = "beanValidator => nome deve ter entre 5 e 10 char")//funcionando
 	private String nome;
 	
 //	@NotBlank(message = "Sobrenome não informado - not blank")
-	@NotEmpty(message = "Informe sobrenome")
-	@NotNull(message = "Sobrenome deve ser informado")			
+//	@NotEmpty(message = "Informe sobrenome") //funcionando
+//	@NotNull(message = "Sobrenome deve ser informado")	//funcionando		
 	private String sobrenome;
 	
-	@DecimalMax(value = "50", message = "beanValidator => max = 50" )
-	@DecimalMin(value = "10", message = "beanValidator => min = 10" )
+//	@DecimalMax(value = "50", message = "beanValidator => max = 50" ) //funcionando
+//	@DecimalMin(value = "10", message = "beanValidator => min = 10" ) //funcionando
 	private Integer idade;
 	
 	@Temporal(TemporalType.DATE) // somente a data
@@ -60,6 +62,27 @@ public class Pessoa implements Serializable {
 	private String ibge;
 	private String gia;
 	
+//	@CPF(message = "beanValidator -> cpf invalido") //funcionando
+	private String cpf;
+	
+//	@TituloEleitoral(message = "beanValidator -> titulo invalido") //funcionando
+	private String tituloEleitoral;
+	
+	public void setTituloEleitoral(String tituloEleitoral) {
+		this.tituloEleitoral = tituloEleitoral;
+	}
+	
+	public String getTituloEleitoral() {
+		return tituloEleitoral;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
 	
 	
 	public String getLogradouro() {
