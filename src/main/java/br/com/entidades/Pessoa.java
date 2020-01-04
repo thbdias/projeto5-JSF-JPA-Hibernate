@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,6 +25,9 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@NotEmpty(message = "beanValidator => nome nao pode vazio")
+	@Size(min = 5, max = 50, message = "beanValidator => nome deve ter entre 5 e 10 char")
 	private String nome;
 	
 //	@NotBlank(message = "Sobrenome não informado - not blank")
@@ -29,7 +35,10 @@ public class Pessoa implements Serializable {
 	@NotNull(message = "Sobrenome deve ser informado")			
 	private String sobrenome;
 	
+	@DecimalMax(value = "50", message = "beanValidator => max = 50" )
+	@DecimalMin(value = "10", message = "beanValidator => min = 10" )
 	private Integer idade;
+	
 	@Temporal(TemporalType.DATE) // somente a data
 	private Date dataNascimento;
 	private String sexo;
