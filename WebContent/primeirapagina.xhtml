@@ -192,6 +192,14 @@
 				<h:outputText value="#{p.nome}" />
 			</h:column>
 			<h:column>
+				<f:facet name="header">Foto</f:facet>
+				<!-- action -> redireciona      actionListener -> executa no lado do servidor e retorna -->
+				<h:commandLink actionListener="#{beanPessoa.download}"> 
+					<h:graphicImage width="60" height="60" value="#{p.fotoIconBase64}"/>
+					<f:param name="fileDownloadId" value="#{p.id}"/>
+				</h:commandLink>
+			</h:column>
+			<h:column>
 				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{p.sobrenome}" />
 			</h:column>
