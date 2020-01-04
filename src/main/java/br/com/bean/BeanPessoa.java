@@ -49,6 +49,10 @@ public class BeanPessoa {
 	public String salvar() {
 		//daoGeneric.salvar(pessoa); //apenas salva no BD e não retorna nada
 		pessoa = daoGeneric.merge(pessoa); //salva ou atualiza e retorna o objeto salvo no BD
+		
+		Estados estado = pessoa.getCidades().getEstados();
+		pessoa.setEstados(estado);
+		
 		carregarPessoas();
 		mostrarMsg("Cadastrado com sucesso!");
 		return "";
@@ -79,6 +83,25 @@ public class BeanPessoa {
 		pessoa = new Pessoa();
 		carregarPessoas();
 		mostrarMsg("Removido com sucesso!");
+		return "";
+	}
+	
+	public String editar() {
+		if (pessoa.getCidades() != null) {
+			Estados estado = pessoa.getCidades().getEstados();
+			pessoa.setEstados(estado);
+			
+			List<Cidades> cidades = JpaUtil.getEntityManger()
+					.createQuery("from Cidades where estados.id = " + estado.getId()).getResultList();
+			
+			List<SelectItem> selectItemsCidade = new ArrayList<SelectItem>();
+			
+			for (Cidades cidade : cidades) {
+				selectItemsCidade.add(new SelectItem(cidade, cidade.getNome()));
+			}
+			
+			setCidades(selectItemsCidade);			
+		}		
 		return "";
 	}
 	

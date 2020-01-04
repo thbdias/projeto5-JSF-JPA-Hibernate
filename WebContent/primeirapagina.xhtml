@@ -193,7 +193,7 @@
 				<h:outputText value="#{p.sobrenome}" />
 			</h:column>
 			<h:column>				
-				<h:commandLink>
+				<h:commandLink action="#{beanPessoa.editar}" title="Editar" immediate="true">
 					<!-- pega o objeto da lista -> pessoa (p), e manda para o manegedBean da tela pessoa -->
 					<f:setPropertyActionListener value="#{p}" target="#{beanPessoa.pessoa}" /> 
 					<h:graphicImage value="resources/img/editar.png"/>
@@ -201,7 +201,7 @@
 			</h:column>
 			<!-- rendered -> responsável por renderizar elementos na tela -> true=mostrar / false=esconder -->
 			<h:column rendered="#{beanPessoa.permiteAcesso('ADMINISTRADOR')}">
-				<h:commandLink action="#{beanPessoa.remove}">
+				<h:commandLink action="#{beanPessoa.remove}" title="Excluir" immediate="true">
 					<!-- pega o objeto da lista -> pessoa (p), e manda para o manegedBean da tela pessoa -->
 					<!-- primeiro executo a atruição do objeto para o manegedBean pelo core -->
 					<!-- depois executa a ação (action) do commandLink -->
