@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.gson.Gson;
@@ -50,6 +51,13 @@ public class BeanPessoa {
 	public void registraLog() {
 		System.out.println("'actionListener' não faz redirecionamento ao contrário do action");
 		System.out.println("'actionListener' é executado antes do 'action' -  método que registra log");
+	}
+	
+	public void mudancaDeValor(ValueChangeEvent evento) {
+		//quando editar algum campo ele pega o valor antigo e o novo
+		//um metodo para tratar cada campo
+		System.out.println("valor antigo: " + evento.getOldValue());
+		System.out.println("valor antigo: " + evento.getNewValue());
 	}
 	
 	public void mostrarMsg(String msg) {
