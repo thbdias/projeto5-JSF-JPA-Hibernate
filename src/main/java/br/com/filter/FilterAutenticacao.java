@@ -3,6 +3,7 @@ package br.com.filter;
 import java.io.IOException;
 import java.net.HttpRetryException;
 
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -20,6 +21,9 @@ import br.com.jpa.util.JpaUtil;
 
 @WebFilter (urlPatterns = "/*") //interceptar todas páginas
 public class FilterAutenticacao implements Filter {
+	
+	@Inject
+	private JpaUtil jpaUtil;
 
 	//executado em todas requisicoes
 	@Override
@@ -56,7 +60,7 @@ public class FilterAutenticacao implements Filter {
 	public void init(FilterConfig config) throws ServletException{
 		//levantar conexão com BD
 		System.out.println(" ********* Levantando BD *********");
-		JpaUtil.getEntityManger();
+		jpaUtil.getEntityManger();
 	}
 
 	

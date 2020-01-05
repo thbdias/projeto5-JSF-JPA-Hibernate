@@ -14,13 +14,14 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,14 +33,19 @@ import br.com.repository.IDaoPessoa;
 import br.com.repository.IDaoPessoaImpl;
 
 //classe responsável por tratar uma página jsf
+
 @ViewScoped
-@ManagedBean(name = "beanPessoa")
+@Named(value = "beanPessoa") //annotation do cdi equivalente ao managedBean
 public class BeanPessoa {
 
 	private Pessoa pessoa = new Pessoa();
-	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
-	private IDaoPessoa iDaoPessoa = new IDaoPessoaImpl();
+
+	@Inject
+	private DaoGeneric<Pessoa> daoGeneric;
+	@Inject
+	private IDaoPessoa iDaoPessoa;
+	
 	
 	
 	
